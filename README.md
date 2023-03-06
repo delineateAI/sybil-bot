@@ -1,13 +1,12 @@
-# Large Tether Transfer Agent
+# Sybil Bot to Find Airdrop Hunters
 
 ## Description
 
-This agent detects transactions with large Tether transfers
+Sybil attacks use a single network node to operate many fake identities, often simultaneously, within a Peer-to-Peer (P2P) network. A sybil attack leads to a small number of network actors gaining an undue share of influence, which in the context of an airdrop, means a larger share of governance tokens. However, intelligent anlayis of transaction history can reveal the wallet adresses behind these attacks and raise alerts when they have occured.  
 
 ## Supported Chains
 
 - Ethereum
-- List any other chains this agent can support e.g. BSC
 
 ## Alerts
 
