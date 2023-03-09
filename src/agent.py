@@ -32,7 +32,8 @@ def is_eoa(w3: Web3, address: str) -> bool:
 #         # logger.warning(f"Failed parsing tx data: {err}")
 #         return None
 
-
+known_airdrop_addresses = set()
+num_transactions_contract_address = {}
 
 def handle_transaction(w3, transaction_event):
 
@@ -64,21 +65,54 @@ def handle_transaction(w3, transaction_event):
     # -- can we use other forta bots to analyze wallets/transaction flowas over time/ect?
 
 
+    # find out if this is a token airdrop trasnaction of some sort
+    # Criteria for identifying airdrops from transactions:
+        # TODO identify as being a token transfer
+        # contract address exists
+        # several transactions with same contract address in timeframe
+        # functionName claim on rainbowtable lookup
+            # is the token address just the to_address or something else? TODO
+
     findings = []
     from_address = transaction_event.from_
     to_address = transaction_event.to
 
-    #find out if this is a token airdrop trasnaction of some sort
-
-
     eoa_sender = is_eoa(w3, from_address)
     eoa_reciever =  is_eoa(w3, to_address)
+
+    def checkSybil():
+        # TODO
+        pass
+
+    if not eoa_sender:
+        # contract address sender, possibly an airdrop
+        if from_address in known_airdrop_addresses:
+            checkSybil()
+
+        else:
+            if from_address in num_transactions_contract_address:
+                if num_transactions_contract_address[from_address] > 1000:
+                    # more than 1000 accounts from this contract in the last x units of time, likely an airdrop
+                    # TODO clear dictionary after x units of time
+                    known_airdrop_addresses.add(from_address)
+                    checkSybil()
+                
+            # check if claim function called
+            erc20_token_address = to_address # (?)
+            claim_function_abi = '{"name":"claim","type":"function","constant":false,"inputs":[TODO],"outputs":[TODO],"payable":false,"stateMutability":"nonpayable"}'
+            claims = transaction_event.filter_function(claim_function_abi, erc20_token_address)
+            if claims.length > 1:
+                # airdrop claim found
+                if from_address in num_transactions_contract_address:
+                    num_transactions_contract_address[from_address] += 1
+                else:
+                    num_transactions_contract_address[from_address] = 1
 
     # skip if no EOAs involved in calling claim or recieving tokens
     if not (eoa_sender or eoa_reciever):
         return findings
 
-    # return empty findingss if empty transaction data?
+    # return empty findings if empty transaction data?
     input_data = transaction_event.transaction.data
     if input_data is None:
         return findings
@@ -87,54 +121,17 @@ def handle_transaction(w3, transaction_event):
     #see if the transaction was signed by a token contract function like claim
 
 
-
     #we want to look at map of all addresses involved most liley
-    addresses = transaction_event.addresses
+    # addresses = transaction_event.addresses
 
 
+    # #to filter and decode function calls in the transaction or traces
+    # erc20_token_address = '0x123abc'
+    # transfer_event_abi = '{"name":"Transfer","type":"event","anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}]}'
+    # transfers = transaction_event.filter_log(transfer_event_abi, erc20_token_address)
+    # print(f'found {transfers.length} transfer events')
 
 
-
-    #to filter and decode function calls in the transaction or traces
-    erc20_token_address = '0x123abc'
-    transfer_event_abi = '{"name":"Transfer","type":"event","anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}]}'
-    transfers = transaction_event.filter_log(transfer_event_abi, erc20_token_address)
-    print(f'found {transfers.length} transfer events')
-
-
-    # # limiting this agent to emit only 5 findings so that the alert feed is not spammed
-    # global findings_count
-    # if findings_count >= 5:
-    #     return findings
-
-    # # filter the transaction logs for any Tether transfers
-    # tether_transfer_events = transaction_event.filter_log(
-    #     ERC20_TRANSFER_EVENT, TETHER_ADDRESS)
-
-    # for transfer_event in tether_transfer_events:
-    #     # extract transfer event arguments
-    #     to = transfer_event['args']['to']
-    #     from_ = transfer_event['args']['from']
-    #     value = transfer_event['args']['value']
-    #     # shift decimals of transfer value
-    #     normalized_value = value / 10 ** TETHER_DECIMALS
-
-    #     # if more than 10,000 Tether were transferred, report it
-    #     if normalized_value > 10000:
-    #         findings.append(Finding({
-    #             'name': 'High Tether Transfer',
-    #             'description': f'High amount of USDT transferred: {normalized_value}',
-    #             'alert_id': 'FORTA-1',
-    #             'severity': FindingSeverity.Low,
-    #             'type': FindingType.Info,
-    #             'metadata': {
-    #                 'to': to,
-    #                 'from': from_,
-    #             }
-    #         }))
-    #         findings_count += 1
-
-    # return findings
 
 def initialize():
     # do some initialization on startup e.g. fetch data
