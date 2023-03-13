@@ -22,16 +22,6 @@ def is_eoa(w3: Web3, address: str) -> bool:
     return code == HexBytes("0x")
 
 
-# def tx_data_to_text(w3, data: str):
-#     try:
-#         text = w3.toText(data).strip()
-#         text_count = text.split(" ")
-#         if len(text_count) >= MIN_TOKEN_COUNT:
-#             return text
-#     except Exception as err:
-#         # logger.warning(f"Failed parsing tx data: {err}")
-#         return None
-
 known_airdrop_addresses = set()
 num_transactions_contract_address = {}
 known_ignore_list= set()
@@ -48,7 +38,7 @@ def handle_transaction(w3, transaction_event):
     if not eoa_sender:
         # contract address sender, possibly an airdrop
         if from_address in known_airdrop_addresses:
-            checkSybil()
+            checkSybil(from_address)
 
         else:
             if from_address in num_transactions_contract_address:
@@ -56,7 +46,7 @@ def handle_transaction(w3, transaction_event):
                     # more than 1000 accounts from this contract in the last x units of time, likely an airdrop
                     # TODO clear dictionary after x units of time
                     known_airdrop_addresses.add(from_address)
-                    checkSybil()
+                    checkSybil(from_address)
                 
             # check if claim function called
             erc20_token_address = to_address # (?)
@@ -78,42 +68,24 @@ def handle_transaction(w3, transaction_event):
     if input_data is None:
         return findings
 
-    # Determine if tx is potential claim, confirmed claim or confirmed token transfer:
-    #
-    # if confirmed token transfer: ERC-20 Token transfer -> if token is on known airdrop list -> checkSybil()
-    #
-    # if confirmed_claim -> storeClaimer()
-    # 
-    # if potential claim (function sends ERC-20 to address for nothing in return) -> determineClaim()
-    # - find claim function in signature hash and ERC-20 address and store in confirmed
 
-
-    # some other useful comments:
-    # once you have a human readable function using rainbow table check to see if in list of airdrop functions
-    # use below to monitor this function or something idk
-    #https://github.com/arbitraryexecution/forta-bot-templates/tree/main/src/monitor-function-calls (can be used to find function calls to a contract)
-    #from this determine the chances this is an airdrop hunter (size trasnaction, other features -- LOT OF WORK HERE)
-    # -- can we use other forta bots to analyze wallets/transaction flowas over time/ect?
-
-def determineClaim(tx):
-    #see if the transaction was signed by a token contract function like claim
-
-    #we want to look at map of all addresses involved most likely
-    # addresses = transaction_event.addresses
-
-    # #to filter and decode function calls in the transaction or traces
-    # erc20_token_address = '0x123abc'
-    # transfer_event_abi = '{"name":"Transfer","type":"event","anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}]}'
-    # transfers = transaction_event.filter_log(transfer_event_abi, erc20_token_address)
-    # print(f'found {transfers.length} transfer events')
-
-def checkSybil():
+# check for sybil attacks given an airdrop from_address
+# construct a graph of to_address transactions for every to_address
+# see if there is any particular account that receives transfers from more than 5 to_addresses
+def checkSybil(from_address):
     # TODO
-    pass
-
-def storeClaimer():
-    # if identified claim function is called, store the wallet address for sybil analysis
-    pass
+    num_transfers_to = {}
+    all_transfers = {} # TODO use etherscan api or keep track of this some other way
+    for to_address in all_transfers:
+        all_transfers_from_to_address = {} # TODO use etherscap api or keep track of this some other way
+        for final_address in all_transfers_from_to_address:
+            if final_address in num_transfers_to:
+                num_transfers_to[final_address] += 1
+            else:
+                num_transfers_to[final_address] = 1
+            if num_transfers_to[final_address] >= 5:
+                # raise alert – sybil attack
+                pass
 
 def initialize():
     # do some initialization on startup e.g. fetch data
