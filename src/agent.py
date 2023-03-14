@@ -26,6 +26,14 @@ known_airdrop_addresses = set()
 num_transactions_contract_address = {}
 known_ignore_list= set()
 
+# from: 10, to: 34
+# from: 9, to: 76
+# from 10, to: 65
+
+# TODOs:
+    # fix claim function filter
+    # etherscan api to get all transactions associated with an address
+
 def handle_transaction(w3, transaction_event):
 
     findings = []
@@ -49,7 +57,8 @@ def handle_transaction(w3, transaction_event):
                     checkSybil(from_address)
                 
             # check if claim function called
-            erc20_token_address = to_address # (?)
+            erc20_token_address = to_address # (?) something diff, the token address
+            # TODO make a list of all the claim functions
             claim_function_abi = '{"name":"claim","type":"function","constant":false,"inputs":[TODO],"outputs":[TODO],"payable":false,"stateMutability":"nonpayable"}'
             claims = transaction_event.filter_function(claim_function_abi, erc20_token_address)
             if claims.length > 1:
@@ -69,15 +78,27 @@ def handle_transaction(w3, transaction_event):
         return findings
 
 
+# TODO: ask about
+    # claim
+    # etherscan api or keep track of transactions on our own
+        # volume of transactions – feasible to keep in memory?
+    # getting the token address from a transaction – is it the to_address?
+
+'''
+Is there a list of functions that we should be looking for as "claim" functions?
+Do you think it'd be better to use an API to look at all transactions that involve a particular erc20 + recipient address while checking for a sybil attack? Or keep track of this information on our own?
+How can we get the ERC20 token address from a transaction – would this just be the to_address in an airdrop claim?
+'''
+
 # check for sybil attacks given an airdrop from_address
 # construct a graph of to_address transactions for every to_address
 # see if there is any particular account that receives transfers from more than 5 to_addresses
 def checkSybil(from_address):
-    # TODO
     num_transfers_to = {}
     all_transfers = {} # TODO use etherscan api or keep track of this some other way
+    # all_transfers = {34, 65}
     for to_address in all_transfers:
-        all_transfers_from_to_address = {} # TODO use etherscap api or keep track of this some other way
+        all_transfers_from_to_address = {} # TODO use etherscan api or keep track of this some other way
         for final_address in all_transfers_from_to_address:
             if final_address in num_transfers_to:
                 num_transfers_to[final_address] += 1
@@ -89,6 +110,7 @@ def checkSybil(from_address):
 
 def initialize():
     # do some initialization on startup e.g. fetch data
+    pass
 
 def handle_block(block_event):
     findings = []
