@@ -57,7 +57,7 @@ def handle_transaction(w3, transaction_event):
     # First 4 bytes are the function selector
     # If the function signature is not "transfer(address,uint256)" or some ERC-20 equivalent, ignore the transaction
     function_signature = transaction_data[:10]
-    if function_signature in list_transfer_signatures:
+    if function_signature not in list_transfer_signatures:
         return findings
 
     # This is the address the token will be sent to by the token contract transfer function
@@ -86,12 +86,11 @@ def handle_transaction(w3, transaction_event):
 # check for sybil attacks given an airdrop from_address
 # see if there is any particular account that receives transfers
 def checkSybil(transaction_event, sender_address, erc20_address):
-     # filter the transaction logs for USDT Transfer events
     # find all erc20_address transactions going TO the sender_address in the last week
     # start by pulling 50 transactions and then check the timestamp on the oldest
     token_transfer_events = transaction_event.filter_log(ERC_20_TRANSFER_EVENT_ABI, erc20_address)
     # find all erc20_address transactions going FROM the erc20_address to sender_address in the last week
-    # num_transactions = 0
+    num_transactions = 0
     week_ago = datetime.now() - timedelta(weeks=1)
     for event in token_transfer_events:
         timestamp = datetime.fromtimestamp(event['timestamp'])
