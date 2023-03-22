@@ -68,7 +68,7 @@ def handle_transaction(w3, transaction_event):
 
     # TODO: Check if exchnage wallet (isn't this the if check in the sybil attack func)
     #what alert id do we raise, severity, ect
-    if(checkSybil(recipient_address, erc20_address)):
+    if(checkSybil(transaction_event, recipient_address, erc20_address)):
         findings.append( Finding({
         'name': 'Sybil Attack',
         'description': f'This wallet may be involved in a Sybil Attack for token {erc20_address}',
@@ -79,13 +79,14 @@ def handle_transaction(w3, transaction_event):
             'from': erc20_address,
             'to': recipient_address
         }}))
+        print(findings)
     return findings
 
 
 
 # check for sybil attacks given an airdrop from_address
 # see if there is any particular account that receives transfers
-def checkSybil(transaction_event, sender_address, erc20_address):
+def checkSybil(transaction_event, recipient_address, erc20_address):
     # find all erc20_address transactions going TO the sender_address in the last week
     # start by pulling 50 transactions and then check the timestamp on the oldest
     token_transfer_events = transaction_event.filter_log(ERC_20_TRANSFER_EVENT_ABI, erc20_address)
@@ -95,7 +96,7 @@ def checkSybil(transaction_event, sender_address, erc20_address):
     for event in token_transfer_events:
         timestamp = datetime.fromtimestamp(event['timestamp'])
         if event['args']['from'] == erc20_address and \
-            event['args']['to'] == sender_address and \
+            event['args']['to'] == recipient_address and \
             timestamp >= week_ago:
             num_transactions += 1
 
