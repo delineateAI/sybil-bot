@@ -4,6 +4,7 @@ from web3 import Web3
 from datetime import datetime, timedelta
 import logging
 logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
+
 ERC_20_TRANSFER_EVENT_ABI = '{"name":"Transfer","type":"event","anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}]}'
 ERC_20_TRANSFER_FROM_FUNCTION_ABI = '{"name":"transferFrom","type":"function","constant":false,"inputs":[{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"value","type":"uint256"}],"outputs":[],"payable":false,"stateMutability":"nonpayable"}'
 
@@ -16,15 +17,16 @@ known_ignore_list= set()
 ##add to list
 list_transfer_signatures = ["0xa9059cbb", "0x8abdfa02" ]
 
+transaction_count = {} # recipient_address: num_transactions
 
 def analyze_transaction(w3, transaction_event):
     findings = []
     sender_address = transaction_event.from_
     erc20_address = transaction_event.to
     logging.debug(f"Transaction event {transaction_event.transaction.hash}")
-
-    print("hi")
     # Check if the token address is in the ignore list
+    # anything that is not in known_ignore_list is an ongoing airdrop token
+    # can we make this assumption that we
     if erc20_address in known_ignore_list:
         return findings
 
@@ -49,9 +51,18 @@ def analyze_transaction(w3, transaction_event):
     logging.debug(f"Transaction data {transaction_data}")
     recipient_address = "0x" + transaction_data[10:74].lstrip("0")
 
+    if erc20_address in transaction_count:
+        if recipient_address in transaction_count[erc20_address]:
+            transaction_count[erc20_address][recipient_address] += 1
+        else:
+            transaction_count[erc20_address][recipient_address] = 1
+    else:
+        transaction_count[erc20_address] = {recipient_address : 1}
+
     # TODO: Check if exchnage wallet (isn't this the if check in the sybil attack func)
     #what alert id do we raise, severity, ect
-    if(checkSybil(w3, transaction_event, recipient_address, erc20_address)):
+
+    if transaction_count[erc20_address][recipient_address] > 5:
         findings.append( Finding({
         'name': 'Sybil Attack',
         'description': f'{recipient_address} wallet may be involved in a Sybil Attack for token {erc20_address}',
@@ -64,6 +75,21 @@ def analyze_transaction(w3, transaction_event):
             'to': recipient_address
         }}))
         logging.debug(f"Potential Sybil attck identified {findings}")
+        print(transaction_count)
+
+    # if(checkSybil(w3, transaction_event, recipient_address, erc20_address)):
+    #     findings.append( Finding({
+    #     'name': 'Sybil Attack',
+    #     'description': f'{recipient_address} wallet may be involved in a Sybil Attack for token {erc20_address}',
+    #     'alert_id': 'FORTA-7',
+    #     'type': FindingType.Info,
+    #     'severity': FindingSeverity.Info,
+    #     'metadata': {
+    #         "transaction_id": transaction_event.transaction.hash,
+    #         'from': erc20_address,
+    #         'to': recipient_address
+    #     }}))
+    #     logging.debug(f"Potential Sybil attck identified {findings}")
     return findings
 
 
@@ -80,18 +106,48 @@ def find_block_timestamp(w3, event_block_number):
 def checkSybil(w3, transaction_event, recipient_address, erc20_address):
     # find all erc20_address transactions going TO the sender_address in the last week
     # start by pulling 50 transactions and then check the timestamp on the oldest
+
+    # TODO: this probably needs to change. As it is right now, this looks at transfers IN THIS TRANSACTION only.
     token_transfer_events = transaction_event.filter_log(ERC_20_TRANSFER_EVENT_ABI, erc20_address)
+
+    print(token_transfer_events)
     # find all erc20_address transactions going FROM the erc20_address to sender_address in the last week
     num_transactions = 0
     week_ago = datetime.now() - timedelta(weeks=1)
+
+    '''
+    Forta test case
+    B->A
+    C->A
+    D->A
+    E->A
+    F->A
+
+
+    B->T->B->T->A
+
+    Airdrop -> B->T->A
+               C->T->A
+    D->T->A
+    E->T->A
+    F->T->A
+
+    T->B ->A
+    T->C ->A
+    T->D ->A
+    T->E ->A
+    T->F ->A
+    '''
 
     # timestamp >= week_ago
     for event in token_transfer_events:
         logging.debug(f"Token Transfer Event  {event}")
         timestamp = find_block_timestamp(w3, event.blockNumber)
         if event['args']['from'] == erc20_address and \
-            event['args']['to'] == recipient_address :
+            event['args']['to'] == recipient_address:
             num_transactions += 1
+
+    # [AttributeDict({'args': AttributeDict({'from': '0xf96cA963Fb2bE5c4eAF47C22c36cF2Fa26231e7f', 'to': '0xee9bd0E71681ee6E9Aa9F1ba46D2D1149f7BD054', 'value': 2000000000000000000000}), 'event': 'Transfer', 'logIndex': 26, 'transactionIndex': 9, 'transactionHash': '0x0afefa0d6262c4ef2bd22314647a8ad5b222bb8d3952780ca219849c826c0218', 'address': '0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29', 'blockHash': '0x580f931f76b7331e669958e0ddd5d43c283cb808792c868d638cee350223df60', 'blockNumber': 14971787})]
 
     # if more than 5 and less than 500, throw alert
     if num_transactions > 5 and num_transactions < 500:
@@ -101,18 +157,9 @@ def checkSybil(w3, transaction_event, recipient_address, erc20_address):
         return False
 
 
-def provide_handle_transaction(w3):
-    def handle_transaction(transaction_event):
-        return analyze_transaction(w3, transaction_event)
-
-    return handle_transaction
-
-
-real_handle_transaction = provide_handle_transaction(w3)
-
-
 def handle_transaction(transaction_event):
-    return real_handle_transaction(transaction_event)
+    # return real_handle_transaction(transaction_event)
+    return analyze_transaction(w3, transaction_event)
 
 
 #TEST#
