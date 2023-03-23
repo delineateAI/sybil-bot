@@ -62,6 +62,8 @@ def analyze_transaction(w3, transaction_event):
     # TODO: Check if exchnage wallet (isn't this the if check in the sybil attack func)
     #what alert id do we raise, severity, ect
 
+    # TODO: make a set for addresses we've thrown an alert for already and don't thr
+
     if transaction_count[erc20_address][recipient_address] > 5:
         findings.append( Finding({
         'name': 'Sybil Attack',
