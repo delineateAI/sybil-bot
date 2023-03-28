@@ -10,7 +10,7 @@ import requests
 logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
 
 
-##TODO: does this web3 instacne change depending on the token being transacted??
+##TODO: does this web3 instance change depending on the token being transacted??
 w3 = Web3(Web3.HTTPProvider(get_json_rpc_url()))
 
 def is_exchange_wallet(wallet_address):
@@ -24,6 +24,17 @@ def is_exchange_wallet(wallet_address):
                 if label["label"] == "exchange" and label["confidence"] > 0.5:
                     return True
     return False
+
+
+def is_eoa(w3, address):
+    """
+    This function determines whether address is an EOA.
+    Ethereum has two account types: Externally-owned account (EOA) – controlled by anyone with the private keys. Contract account – a smart contract deployed to the network, controlled by code.
+    """
+    if address is None:
+        return False
+    code = w3.eth.getCode(address)
+    return not (len(code) > 2)
 
 # add to list
 #transfer, transferfrom, airdroptransfer
@@ -78,7 +89,15 @@ def analyze_transaction(w3, transaction_event):
         from_address = "0x" + transaction_data[10:74].lstrip("0")
         recipient_address = "0x" + transaction_data[74:].lstrip("0")
 
+    # TODO: Check logic
+    exchange_wallet = is_exchange_wallet(recipient_address)
+    eoa = is_eoa(recipient_address)
+    if (exchange_wallet or not eoa):
+        return findings
 
+    #TODO: change the data structure / instead of storing counter just take length of set
+
+    #TODO: also need a way to pop oldest entries from dictionary-- what should this look like??
     if erc20_address in transaction_count:
         #added extra check to make sure we increment count for every unqiue sender (airdrop 1000 fort and send many small transfers to recipinet wallet)
         senders[erc20_address][recipient_address].add(sender_address)
@@ -94,17 +113,14 @@ def analyze_transaction(w3, transaction_event):
         transaction_count[erc20_address] = {recipient_address : 1}
         senders[erc20_address] = {recipient_address: set(sender_address)}
 
-    # TODO: Check if exchange wallet
-    # what alert id do we raise, severity, etc
-    exchange_wallet = is_exchange_wallet(recipient_address)
 
 
-    #Make sure that the To address should also not be a contract
-    #does this mean make sure the reciever is EOA?
+
 
     #then what?
 
-    #how should we determien confidence
+    #TODO: how to increase confidence
+    #TODO: sends all senders in metadata
     if transaction_count[erc20_address][recipient_address] == 6:
         findings.append( Finding({
         'name': 'Sybil Attack',
@@ -115,13 +131,14 @@ def analyze_transaction(w3, transaction_event):
             "entityType": EntityType.Address,
             "entity": f"{recipient_address}",
             "label": "Sybil; attacker wallet",
-            "confidence": 0.7,
+            "confidence": 0.5,
         }],
         'type': FindingType.Suspicious,
         'severity': FindingSeverity.Medium,
         'metadata': {
             "transaction_id": transaction_event.transaction.hash,
-            'from': erc20_address,
+            "from": senders[erc20_address][recipient_address],
+            'token_address': erc20_address,
             'to': recipient_address
         }}))
         logging.debug(f"Potential Sybil attack identified {findings}")
