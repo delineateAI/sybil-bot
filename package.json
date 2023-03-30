@@ -1,8 +1,8 @@
 {
-  "name": "forta-agent-starter",
+  "name": "sybil-attack-detection-bot",
   "version": "0.0.1",
-  "description": "Forta Agent Python starter project",
-  "repository": "https://github.com/forta-network/forta-bot-sdk/tree/master/starter-project",
+  "description": "A bot to detect sybil attacks on airdrops",
+  "repository": "https://github.com/delineateAI/sybil-bot",
   "chainIds": [
     1
   ],
