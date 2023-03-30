@@ -1,5 +1,5 @@
-from constants import known_ignore_list
-from forta_agent import Finding, FindingType, FindingSeverity, get_json_rpc_url
+from .constants import known_ignore_list
+from forta_agent import Finding, FindingType, FindingSeverity, get_json_rpc_url, EntityType
 from hexbytes import HexBytes
 from web3 import Web3
 from datetime import datetime, timedelta
@@ -33,7 +33,7 @@ def is_eoa(w3, address):
     """
     if address is None:
         return False
-    code = w3.eth.getCode(address)
+    code = w3.eth.getCode(Web3.toChecksumAddress(address) )
     return not (len(code) > 2)
 
 # add to list
@@ -48,7 +48,6 @@ def is_eoa(w3, address):
 # "0x8abdfa02" -- airdrop transfer function byt don't know how works
 list_transfer_signatures = ["0xa9059cbb", "0x23b872dd" ]
 
-transaction_count = {} # recipient_address: num_transactions
 senders = {} #who is initiating these transactions to the recipient wallet
 
 def analyze_transaction(w3, transaction_event):
@@ -91,37 +90,30 @@ def analyze_transaction(w3, transaction_event):
 
     # TODO: Check logic
     exchange_wallet = is_exchange_wallet(recipient_address)
-    eoa = is_eoa(recipient_address)
+    eoa = is_eoa(w3, recipient_address)
     if (exchange_wallet or not eoa):
         return findings
 
     #TODO: change the data structure / instead of storing counter just take length of set
 
     #TODO: also need a way to pop oldest entries from dictionary-- what should this look like??
-    if erc20_address in transaction_count:
+    if erc20_address in senders:
         #added extra check to make sure we increment count for every unqiue sender (airdrop 1000 fort and send many small transfers to recipinet wallet)
-        senders[erc20_address][recipient_address].add(sender_address)
-        if recipient_address in transaction_count[erc20_address]:
+        if recipient_address in senders[erc20_address]:
             #cannot make this an AND statement
-            if(sender_address not in senders[erc20_address][recipient_address]):
-                transaction_count[erc20_address][recipient_address] += 1
+            senders[erc20_address][recipient_address].add(sender_address)
         else:
-            transaction_count[erc20_address][recipient_address] = 1
-            senders[erc20_address][recipient_address] = set(sender_address)
+            senders[erc20_address][recipient_address] = {sender_address}
 
     else:
-        transaction_count[erc20_address] = {recipient_address : 1}
-        senders[erc20_address] = {recipient_address: set(sender_address)}
-
-
-
+        senders[erc20_address] = {recipient_address: {sender_address}}
 
 
     #then what?
 
     #TODO: how to increase confidence
     #TODO: sends all senders in metadata
-    if transaction_count[erc20_address][recipient_address] == 6:
+    if len( senders[erc20_address][recipient_address])== 6:
         findings.append( Finding({
         'name': 'Sybil Attack',
         'description': f'{recipient_address} wallet may be involved in a Sybil Attack for token {erc20_address}',
@@ -137,7 +129,7 @@ def analyze_transaction(w3, transaction_event):
         'severity': FindingSeverity.Medium,
         'metadata': {
             "transaction_id": transaction_event.transaction.hash,
-            "from": senders[erc20_address][recipient_address],
+            "from": list(senders[erc20_address][recipient_address]),
             'token_address': erc20_address,
             'to': recipient_address
         }}))
