@@ -117,7 +117,7 @@ def analyze_transaction(w3, transaction_event):
         findings.append( Finding({
         'name': 'Sybil Attack',
         'description': f'{recipient_address} wallet may be involved in a Sybil Attack for token {erc20_address}',
-        'alert_id': 'AIRDROP-1',
+        'alert_id': 'SYBIL-1',
         'labels': [
         {
             "entityType": EntityType.Address,
