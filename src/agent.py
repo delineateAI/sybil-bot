@@ -2,16 +2,18 @@ from .constants import known_ignore_list
 from forta_agent import Finding, FindingType, FindingSeverity, get_json_rpc_url, EntityType
 from hexbytes import HexBytes
 from web3 import Web3
-from datetime import datetime, timedelta
+import datetime
 import logging
 import requests
+import os
 
 
 logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
 
-
-##TODO: does this web3 instance change depending on the token being transacted??
 w3 = Web3(Web3.HTTPProvider(get_json_rpc_url()))
+
+senders = {} #who is initiating these transactions to the recipient wallet
+last_clear =  datetime.datetime.now() # set path for file to store last clear timestamp
 
 def is_exchange_wallet(wallet_address):
     url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities{wallet_address}=&labels=exchange"
@@ -25,6 +27,10 @@ def is_exchange_wallet(wallet_address):
                     return True
     return False
 
+
+def is_older_than_one_week(last_check):
+    time_diff = datetime.datetime.now() - last_check
+    return time_diff.days >= 7
 
 def is_eoa(w3, address):
     """
@@ -48,13 +54,19 @@ def is_eoa(w3, address):
 # "0x8abdfa02" -- airdrop transfer function byt don't know how works
 list_transfer_signatures = ["0xa9059cbb", "0x23b872dd" ]
 
-senders = {} #who is initiating these transactions to the recipient wallet
-
 def analyze_transaction(w3, transaction_event):
+    global last_clear
     findings = []
     sender_address = transaction_event.from_
     erc20_address = transaction_event.to
+
     logging.debug(f"Transaction event {transaction_event.transaction.hash}")
+        # check if one week has passed since last clear and clear dictionary if necessary
+    if is_older_than_one_week(last_clear):
+        senders.clear()
+        last_clear = datetime.datetime.now()
+
+
     # Check if the token address is in the ignore list
     # anything that is not in known_ignore_list is an ongoing airdrop token
     # can we make this assumption that we
@@ -86,7 +98,7 @@ def analyze_transaction(w3, transaction_event):
     else:
         #meaning transferFrom(address, address, uint256)
         from_address = "0x" + transaction_data[10:74].lstrip("0")
-        recipient_address = "0x" + transaction_data[74:].lstrip("0")
+        recipient_address = "0x" + transaction_data[74:74+64].lstrip("0")
 
     # TODO: Check logic
     exchange_wallet = is_exchange_wallet(recipient_address)
@@ -109,11 +121,13 @@ def analyze_transaction(w3, transaction_event):
         senders[erc20_address] = {recipient_address: {sender_address}}
 
 
-    #then what?
-
     #TODO: how to increase confidence
-    #TODO: sends all senders in metadata
+
     if len( senders[erc20_address][recipient_address])== 6:
+        ## it took longer than a week to get to 6 transfers-- probably not a sybil attacker?
+        # if( is_older_than_one_week( start_times[erc20_address][recipient_address]) ):
+        #     senders[erc20_address][recipient_address] = {}
+        # else:
         findings.append( Finding({
         'name': 'Sybil Attack',
         'description': f'{recipient_address} wallet may be involved in a Sybil Attack for token {erc20_address}',
