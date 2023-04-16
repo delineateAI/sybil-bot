@@ -16,7 +16,7 @@ senders = {} #who is initiating these transactions to the recipient wallet
 last_clear =  datetime.datetime.now() # set path for file to store last clear timestamp
 
 def is_exchange_wallet(wallet_address):
-    url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities{wallet_address}=&labels=exchange"
+    url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities={wallet_address}&labels=exchange"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
@@ -26,6 +26,20 @@ def is_exchange_wallet(wallet_address):
                 if label["label"] == "exchange" and label["confidence"] > 0.5:
                     return True
     return False
+
+# def should_filter(wallet_address):
+#     url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities="
+#     response = requests.get(url)
+
+#     if response.status_code == 200:
+#         data = response.json()["events"]
+#         for event in data:
+#             label = event["label"]
+#             if label["entity"] == wallet_address:
+#                 return True
+
+#     return False
+
 
 
 def is_older_than_one_week(last_check):
@@ -100,15 +114,18 @@ def analyze_transaction(w3, transaction_event):
         from_address = "0x" + transaction_data[10:74].lstrip("0")
         recipient_address = "0x" + transaction_data[74:74+64].lstrip("0")
 
+    # filter_out(recipient_address)
+    # if should_filter(recipient_address):
+    #     return findings
+
     # TODO: Check logic
     exchange_wallet = is_exchange_wallet(recipient_address)
     eoa = is_eoa(w3, recipient_address)
     if (exchange_wallet or not eoa):
         return findings
 
-    #TODO: change the data structure / instead of storing counter just take length of set
 
-    #TODO: also need a way to pop oldest entries from dictionary-- what should this look like??
+
     if erc20_address in senders:
         #added extra check to make sure we increment count for every unqiue sender (airdrop 1000 fort and send many small transfers to recipinet wallet)
         if recipient_address in senders[erc20_address]:
