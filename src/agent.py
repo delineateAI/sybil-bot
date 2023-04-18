@@ -15,30 +15,18 @@ w3 = Web3(Web3.HTTPProvider(get_json_rpc_url()))
 senders = {} #who is initiating these transactions to the recipient wallet
 last_clear =  datetime.datetime.now() # set path for file to store last clear timestamp
 
+# 0x28c6c06298d514db089934071355e5743bf21d60
+# https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities={wallet_address}&labels=exchange
 def is_exchange_wallet(wallet_address):
     url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities={wallet_address}&labels=exchange"
     response = requests.get(url)
     if response.status_code == 200:
-        data = response.json()
-        if wallet_address in data and "labels" in data[wallet_address]:
-            labels = data[wallet_address]["labels"]
-            for label in labels:
-                if label["label"] == "exchange" and label["confidence"] > 0.5:
-                    return True
+        data = response.json()["events"]
+        for event in data:
+            label = event["label"]
+            if label["entity"] == wallet_address and label["confidence"] > 0.5:
+                return True
     return False
-
-# def should_filter(wallet_address):
-#     url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities="
-#     response = requests.get(url)
-
-#     if response.status_code == 200:
-#         data = response.json()["events"]
-#         for event in data:
-#             label = event["label"]
-#             if label["entity"] == wallet_address:
-#                 return True
-
-#     return False
 
 
 
