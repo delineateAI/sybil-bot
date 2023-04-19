@@ -13,7 +13,7 @@ logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
 w3 = Web3(Web3.HTTPProvider(get_json_rpc_url()))
 
 senders = {} #who is initiating these transactions to the recipient wallet
-last_clear =  datetime.datetime.now() # set path for file to store last clear timestamp
+last_clear =  datetime.datetime.now() # last clear
 
 # 0x28c6c06298d514db089934071355e5743bf21d60
 # https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities={wallet_address}&labels=exchange
@@ -45,7 +45,7 @@ def is_eoa(w3, address):
     return not (len(code) > 2)
 
 # add to list
-#transfer, transferfrom, airdroptransfer
+#transfer, transferfrom,
 # transfer is used to transfer tokens from the caller's address to another address.
 # It can only be called by the token owner, and the caller must have a sufficient balance to complete the transfer.
 
