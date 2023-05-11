@@ -44,6 +44,8 @@ def is_eoa(w3, address):
     code = w3.eth.getCode(Web3.toChecksumAddress(address) )
     return not (len(code) > 2)
 
+#do all EVM compatibale chains if EOA works
+
 # add to list
 #transfer, transferfrom,
 # transfer is used to transfer tokens from the caller's address to another address.
@@ -128,8 +130,8 @@ def analyze_transaction(w3, transaction_event):
 
     #TODO: how to increase confidence
 
-    if len( senders[erc20_address][recipient_address])== 6:
-        ## it took longer than a week to get to 6 transfers-- probably not a sybil attacker?
+    if len( senders[erc20_address][recipient_address])== 10:
+        ## it took longer than a week to get to 10 transfers-- probably not a sybil attacker?
         # if( is_older_than_one_week( start_times[erc20_address][recipient_address]) ):
         #     senders[erc20_address][recipient_address] = {}
         # else:

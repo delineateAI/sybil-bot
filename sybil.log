@@ -1753,3 +1753,65 @@ DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-e
 DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
 DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 5}
 DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7fe58439f850>]
+DEBUG:root:Transaction event 0x4e72d3fd19e0b4af0c7460d8ca8e6c97d6365d3015b87df0ce82448181e8dec4
+DEBUG:root:Transaction event 0xc1251820fa0f60d5dfe8180f0096653ecf9300201e67698ab635fea6e10e4756
+DEBUG:root:Token Address 0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29
+DEBUG:root:Transaction data 0xa9059cbb000000000000000000000000ee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd05400000000000000000000000000000000000000000000003635c9adc5dea00000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0xee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd054&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 0}
+DEBUG:root:Transaction event 0xf525c43b707aae754eadafbfec8cc71799b02c2e976d12cc20e8686d558e74ad
+DEBUG:root:Transaction event 0x1b5794f87eb5df64cd440de5b94fb226e999f7f279fe51a7f96e63f02676d24d
+DEBUG:root:Token Address 0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29
+DEBUG:root:Transaction data 0xa9059cbb000000000000000000000000ee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd05400000000000000000000000000000000000000000000003635c9adc5dea00000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0xee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd054&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:root:Transaction event 0x789a0ed195874b142acf5684fae10712c7770e35c14d8f9d8746d796e3fa1799
+DEBUG:root:Transaction event 0x0a1942b33e33015fa948a2fd95ca8e77cdd3674837d14882daa91781bc46f007
+DEBUG:root:Token Address 0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29
+DEBUG:root:Transaction data 0xa9059cbb000000000000000000000000ee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd05400000000000000000000000000000000000000000000003635c9adc5dea00000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0xee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd054&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 2}
+DEBUG:root:Transaction event 0x3d012345a9702aae46e892e188a5365816834e277c171921c1d4f2145a1a447e
+DEBUG:root:Transaction event 0xe154ded8c020cd84c3181ddb378b2cb82fbcdc7d6889255b950663913f1c1966
+DEBUG:root:Token Address 0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29
+DEBUG:root:Transaction data 0xa9059cbb000000000000000000000000ee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd05400000000000000000000000000000000000000000000003635c9adc5dea00000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0xee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd054&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 3}
+DEBUG:root:Transaction event 0x8761f1b009b5260e30561f611991b548072b9562bcc467987d6b96317ec912c1
+DEBUG:root:Transaction event 0x528c515cc6671e8a3f76cebe51cea15b51e3994bdda6e99e3cbee816caf5025f
+DEBUG:root:Token Address 0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29
+DEBUG:root:Transaction data 0xa9059cbb000000000000000000000000ee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd05400000000000000000000000000000000000000000000006c6b935b8bbd400000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0xee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd054&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 4}
+DEBUG:root:Transaction event 0xbd19d8f36c2cb274f34bcf678f63ffb4d8f41f9ebbd042a497e68041e4c59c66
+DEBUG:root:Transaction event 0x0afefa0d6262c4ef2bd22314647a8ad5b222bb8d3952780ca219849c826c0218
+DEBUG:root:Token Address 0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29
+DEBUG:root:Transaction data 0xa9059cbb000000000000000000000000ee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd05400000000000000000000000000000000000000000000006c6b935b8bbd400000
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0xee9bd0e71681ee6e9aa9f1ba46d2d1149f7bd054&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 5}
+DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7fafbc89f850>]
