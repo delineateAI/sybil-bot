@@ -7,7 +7,18 @@ import datetime
 import logging
 import requests
 import os
+# import rlp
 
+	# 1.	Lines 105-108, for all contract deployments on multi chain the to field of a deployed contract transaction will be None?
+	# 2.	Line 107 how do I get the deployed contract address now?
+	# 3.	Should we really be looking for all contract deployments— there will be a lot! Can we narrow this down to token contracts without having to use w3 and pull the contract ABI (we don’t even know the contract address yet)
+
+	# 4.	WE can’t really remove anything from newlyDeployedContract because the entire point is that many token contracts are created and only transferred at a later time
+	# 5.	Every 6 month clear the watchlist (which only has deployed contracts that we saw had their very first transaction)?
+	# 6.	How do I use the L2 cache to store newlyDeployedContract and watchlist— the chainId is the key
+
+
+#CHAIN IDs , 56, 137, 43114, 42161, 10, 250
 
 logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
 
@@ -35,6 +46,17 @@ def is_exchange_wallet(wallet_address):
             if label["entity"] == wallet_address and label["confidence"] > 0.5:
                 return True
     return False
+
+
+
+def calc_contract_address(w3, address, nonce) -> str:
+    """
+    this function calculates the contract address from sender/nonce
+    :return: contract address: str
+    """
+
+    address_bytes = bytes.fromhex(address[2:].lower())
+    return w3.toChecksumAddress(w3.keccak(rlp.encode([address_bytes, nonce]))[-20:]).lower()
 
 
 def is_older_than_x_days(last_check, x):
@@ -103,8 +125,8 @@ def analyze_transaction(w3, transaction_event):
         return findings
     #see if this transaction deploys a contract
     if is_contract_deployment(transaction_event):
-        # WRONGGG transaction_event.contractAddress
-        newlyDeployedContracts[CHAIN_ID].append( transaction_event.contractAddress )
+
+        newlyDeployedContracts[CHAIN_ID].append(  calc_contract_address( w3, transaction_event.from_,  transaction_event.transaction.nonce ) )
         return findings
 
     # First 4 bytes are the function selector
