@@ -104,6 +104,10 @@ def is_contract_deployment(transaction_event):
     else:
         return False
 
+
+
+
+
 list_transfer_signatures = ["0xa9059cbb", "0x23b872dd" ]
 
 def analyze_transaction(w3, transaction_event):
