@@ -1363,3 +1363,620 @@ DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-e
 DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
 DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
 DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 2}
+DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7fa428752ca0>]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 3}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 4}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 2}
+DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7ff4f09e0a30>]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 3}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 4}
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 2}
+DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7fda095efc10>]
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 2}
+DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7fc438193430>]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 3}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 4}
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+INFO:root:Loading V3--1_-1 locally
+INFO:root:File V3--1 does not exist
+DEBUG:web3.RequestManager:Making request. Method: eth_chainId
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): cloudflare-eth.com:443
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 39
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_chainId, Response: {'jsonrpc': '2.0', 'result': '0x1', 'id': 0}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 1}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 2}
+DEBUG:root:Potential Sybil attack identified [<forta_agent.finding.Finding object at 0x7f9d6002b430>]
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 3}
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): api.forta.network:443
+DEBUG:urllib3.connectionpool:https://api.forta.network:443 "GET /labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities=0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7&labels=exchange HTTP/1.1" 200 31
+DEBUG:web3.RequestManager:Making request. Method: eth_getCode
+DEBUG:web3.providers.HTTPProvider:Making request HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode
+DEBUG:urllib3.connectionpool:https://cloudflare-eth.com:443 "POST / HTTP/1.1" 200 38
+DEBUG:web3.providers.HTTPProvider:Getting response HTTP. URI: https://cloudflare-eth.com/, Method: eth_getCode, Response: {'jsonrpc': '2.0', 'result': '0x', 'id': 4}

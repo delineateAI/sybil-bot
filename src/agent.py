@@ -7,35 +7,47 @@ import datetime
 import logging
 import requests
 import os
-# import rlp
+import rlp
 
-	# 1.	Lines 105-108, for all contract deployments on multi chain the to field of a deployed contract transaction will be None?
-	# 2.	Line 107 how do I get the deployed contract address now?
-	# 3.	Should we really be looking for all contract deployments— there will be a lot! Can we narrow this down to token contracts without having to use w3 and pull the contract ABI (we don’t even know the contract address yet)
-
-	# 4.	WE can’t really remove anything from newlyDeployedContract because the entire point is that many token contracts are created and only transferred at a later time
-	# 5.	Every 6 month clear the watchlist (which only has deployed contracts that we saw had their very first transaction)?
-	# 6.	How do I use the L2 cache to store newlyDeployedContract and watchlist— the chainId is the key
-
-
-#CHAIN IDs , 56, 137, 43114, 42161, 10, 250
+#REmeber uncomment value if statement before submit
 
 logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
 
 w3 = Web3(Web3.HTTPProvider(get_json_rpc_url()))
 CHAIN_ID = -1
+SUPPORTED_CHAINS = [    1,
+    56,
+    137,
+    43114,
+    42161,
+    10,
+    250]
+
+INITIALIZED = False
+
 senders = {} #who is initiating these transactions to the recipient wallet
 last_clear =  datetime.datetime.now() # last clear
-newlyDeployedContracts = {} #tokens that have been deployed
+
+NEWLY_DEPLOYED_CONTRACTS = {} #tokens that have been deployed
 # Love token contract
 # ["0xB22C05CeDbF879a661fcc566B5a759d005Cf7b4C"]
-#once a deployed token gets its first transfer add it watchlist
-watchlist = {}
+#once a deployed token gets its first transfer add it WATCHLIST
+WATCHLIST = {}
 # https://etherscan.io/address/0x4010ad9a0f67e26a85908e10f03de4b4d46c77f7#tokentxns <- test case
-# test txs: 0x1a1c595d65129c4447ee128786a90f1a55f4a368a7ab17e4f9e5d069c2c91d59, 0x4464cc5a3adbdac655b175b2f9d78563e56cc3c7963350c8e2823eb2c2f73832, 0x964a3133da8e3ee68b7c18ad0b43010d5bc661d4217ded7b6ebdf07b9d64f4dc, 0x2017a1cc0ff5bce3b9ceb88cf0e432fb0ec07e11ac461ebd237233919c064949
+#  "npm run tx 0xc466958c04451fb29278b3e9d453b29308d7556b12e7706d7f9fe46e60a128e4,0x1a1c595d65129c4447ee128786a90f1a55f4a368a7ab17e4f9e5d069c2c91d59,0x4464cc5a3adbdac655b175b2f9d78563e56cc3c7963350c8e2823eb2c2f73832,0x964a3133da8e3ee68b7c18ad0b43010d5bc661d4217ded7b6ebdf07b9d64f4dc,0x2017a1cc0ff5bce3b9ceb88cf0e432fb0ec07e11ac461ebd237233919c064949"
 
-# 0x28c6c06298d514db089934071355e5743bf21d60
-# https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities={wallet_address}&labels=exchange
+
+
+
+
+def persist(obj: object, chain_id: int):
+    L2Cache.write(obj, chain_id, chain_id)
+
+
+def load(chain_id: int, key: str) -> object:
+    return L2Cache.load(chain_id, chain_id)
+
+
 def is_exchange_wallet(wallet_address):
     url = f"https://api.forta.network/labels/state?sourceIds=etherscan,0x6f022d4a65f397dffd059e269e1c2b5004d822f905674dbf518d968f744c2ede&entities={wallet_address}&labels=exchange"
     response = requests.get(url)
@@ -47,8 +59,6 @@ def is_exchange_wallet(wallet_address):
                 return True
     return False
 
-
-
 def calc_contract_address(w3, address, nonce) -> str:
     """
     this function calculates the contract address from sender/nonce
@@ -58,6 +68,12 @@ def calc_contract_address(w3, address, nonce) -> str:
     address_bytes = bytes.fromhex(address[2:].lower())
     return w3.toChecksumAddress(w3.keccak(rlp.encode([address_bytes, nonce]))[-20:]).lower()
 
+def is_contract_deployment(transaction_event):
+    # The 'to' field will be None for contract creation transactions
+    if transaction_event.transaction.to is None:
+        return True
+    else:
+        return False
 
 def is_older_than_x_days(last_check, x):
     time_diff = datetime.datetime.now() - last_check
@@ -73,36 +89,31 @@ def is_eoa(w3, address):
     code = w3.eth.getCode(Web3.toChecksumAddress(address) )
     return not (len(code) > 2)
 
-# # Token Age from first transfer
-# TRANSFER_EVENT_SIGNATURE = 'Transfer(address,address,uint256)'
-# def get_first_transfer(w3, token_address):
-#     latest_block = w3.eth.blockNumber
-#     transaction_receipt = w3.eth.getTransactionReceipt(token_address)
-#     if transaction_receipt is not None:
-#         contract_creation_block = transaction_receipt['blockNumber']
-#     else:
-#         return None
-#     transfer_event_filter = w3.eth.filter({
-#         'fromBlock': contract_creation_block,
-#         'toBlock': latest_block,
-#         'address': token_address,
-#         'topics': [w3.keccak(text=TRANSFER_EVENT_SIGNATURE).hex()]
-#     })
-#     entries = transfer_event_filter.get_all_entries()
-#     return entries[0] if entries else None
 
-def is_token_older_than_6_months(w3, block_number):
-    block = w3.eth.getBlock(block_number)
-    block_time = datetime.utcfromtimestamp(block['timestamp'])
-    now =  datetime.datetime.now()
-    return (now - block_time) > datetime.timedelta(days=180)
+def initialize():
+    """
+    this function initializes the state variables that are tracked across tx and blocks
+    it is called from test to reset state between tests
+    """
+    global INITIALIZED
 
-def is_contract_deployment(transaction_event):
-    # The 'to' field will be None for contract creation transactions
-    if transaction_event['transaction']['to'] is None:
-        return True
-    else:
-        return False
+    global NEWLY_DEPLOYED_CONTRACTS
+    global WATCHLIST
+    global CHAIN_ID
+    for k in SUPPORTED_CHAINS:
+        try:
+            newly_deployed_contracts = load( CHAIN_ID, CHAIN_ID)
+        except:
+            newly_deployed_contracts = None
+        NEWLY_DEPLOYED_CONTRACTS[k] = [] if newly_deployed_contracts is None else newly_deployed_contracts
+    for k in SUPPORTED_CHAINS:
+        try:
+            watchlist = load( CHAIN_ID, CHAIN_ID)
+        except:
+            newly_deployed_contracts = None
+        WATCHLIST[k] = [] if watchlist is None else watchlist
+
+    INITIALIZED = True
 
 
 
@@ -113,15 +124,16 @@ list_transfer_signatures = ["0xa9059cbb", "0x23b872dd" ]
 def analyze_transaction(w3, transaction_event):
     global last_clear
     global CHAIN_ID
+
+
+    findings =[]
     if CHAIN_ID == -1:
         CHAIN_ID = w3.eth.chainId
+    if(CHAIN_ID not in NEWLY_DEPLOYED_CONTRACTS.keys()):
+        NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID] = []
+    if(CHAIN_ID not in WATCHLIST.keys()):
+        WATCHLIST[CHAIN_ID] = []
 
-    if(CHAIN_ID not in newlyDeployedContracts.keys()):
-        newlyDeployedContracts[CHAIN_ID] = {}
-    if(CHAIN_ID not in watchlist.keys()):
-        watchlist[CHAIN_ID] = {}
-
-    findings = []
     # Get the input data of the transaction
     transaction_data = transaction_event.transaction.data
     # Return empty findings if the input data is empty
@@ -129,9 +141,11 @@ def analyze_transaction(w3, transaction_event):
         return findings
     #see if this transaction deploys a contract
     if is_contract_deployment(transaction_event):
-
-        newlyDeployedContracts[CHAIN_ID].append(  calc_contract_address( w3, transaction_event.from_,  transaction_event.transaction.nonce ) )
+        print("yo")
+        NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID].append(  calc_contract_address( w3, transaction_event.from_,  transaction_event.transaction.nonce ) )
         return findings
+
+
 
     # First 4 bytes are the function selector
     # If the function signature is not "transfer(address,uint256)" or some ERC-20 equivalent, ignore the transaction
@@ -142,55 +156,53 @@ def analyze_transaction(w3, transaction_event):
     sender_address = transaction_event.from_
     erc20_address = transaction_event.to
 
-    #if this transaction has 0 value, ignore
-    if transaction_event.transaction.value <= 0:
+
+    # if this transaction has 0 value, ignore
+    # if transaction_event.transaction.value <= 0:
+    #     return findings
+
+    # detect first transactions for recently deployed contracts and add to WATCHLIST
+    if erc20_address in NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID]:
+        NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID].remove(erc20_address)
+        WATCHLIST[CHAIN_ID].append(erc20_address)
+
+
+
+    # if a transaction is not a new token deployment or a transaction in our newly depoloyed list or our WATCHLIST then ignore
+    if erc20_address not in WATCHLIST[CHAIN_ID]:
         return findings
 
-    # detect first transactions for recently deployed contracts and add to watchlist
-    if erc20_address in newlyDeployedContracts[CHAIN_ID]:
-        watchlist[CHAIN_ID].append(newlyDeployedContracts[CHAIN_ID].pop(erc20_address))
-
-    # if a transaction is not a new token deployment or a transaction in our newly depoloyed list or our watchlist then ignore
-    if erc20_address not in watchlist[CHAIN_ID]:
-        return findings
-
-
-    # at this point all txs will be nonzero, erc20 transfers on the watchlist of active recently created tokens
-
+    # at this point all txs will be nonzero, erc20 transfers on the WATCHLIST of active recently created tokens
     if(CHAIN_ID not in senders.keys()):
         senders[CHAIN_ID] = {}
-    logging.debug(f"Transaction event {transaction_event.transaction.hash}")
+
     # check if x days has passed since last clear and clear dictionary if necessary. Time window to assess concentration of token transactions
-    if is_older_than_x_days(last_clear, 4):
+    if is_older_than_x_days(last_clear, 7):
         senders[CHAIN_ID].clear()
         last_clear = datetime.datetime.now()
 
 
-    # if erc20_address in known_ignore_list:
-    #     return findings
-
-    #find the recipient if this transaciton a transfer
-    logging.debug(f"Token Address {erc20_address}")
-    logging.debug(f"Transaction data {transaction_data}")
     if function_signature == list_transfer_signatures[0]:
         #meaning transfer(address,uint256)
         recipient_address = "0x" + transaction_data[10:74].lstrip("0")
     else:
         #meaning transferFrom(address, address, uint256)
+        from_address = "0x" + transaction_data[10:74].lstrip("0")
         recipient_address = "0x" + transaction_data[74:74+64].lstrip("0")
 
-    #check if wallet an exchange or not EOA
+    # filter_out(recipient_address)
+    # if should_filter(recipient_address):
+    #     return findings
+
+    # TODO: Check logic
     exchange_wallet = is_exchange_wallet(recipient_address)
     eoa = is_eoa(w3, recipient_address)
     if (exchange_wallet or not eoa):
         return findings
 
-    # first_transfer = get_first_transfer(w3, erc20_address)
-    # if erc20_address not in token_first_transfers.keys():
-    #     token_first_transfers[erc20_address] = first_transfer
-    # if is_token_older_than_6_months(w3, first_transfer['blockNumber']):
-    #     return findings
-    #update the senders dictionary with new senders
+
+
+ #update the senders dictionary with new senders
     if erc20_address in senders[CHAIN_ID]:
         #added extra check to make sure we increment count for every unqiue sender (airdrop 1000 fort and send many small transfers to recipinet wallet)
         if recipient_address in senders[CHAIN_ID][erc20_address]:
@@ -203,7 +215,8 @@ def analyze_transaction(w3, transaction_event):
         senders[CHAIN_ID][erc20_address] = {recipient_address: {sender_address}}
 
 
-    #if anyone is claiming more than their one airdrop for this new token, alert
+    #TODO: how to increase confidence
+    print(senders)
     if len( senders[CHAIN_ID][erc20_address][recipient_address]) == 2:
         findings.append( Finding({
         'name': 'Sybil Attack',
@@ -223,9 +236,33 @@ def analyze_transaction(w3, transaction_event):
             "wallet received tokens from the following addresses": list(senders[CHAIN_ID][erc20_address][recipient_address]),
             'token_address': erc20_address,
             'to': recipient_address,
-            'watchlist_size': len(watchlist[CHAIN_ID])
+            'watchlist_size': len(WATCHLIST[CHAIN_ID])
         }}))
         logging.debug(f"Potential Sybil attack identified {findings}")
 
+
+        if datetime.datetime.now().minute == 0:  # every hour
+            persist_state()
+
+
     return findings
+
+
+
+def persist_state():
+    global NEWLY_DEPLOYED_CONTRACTS
+    global WATCHLIST
+    global CHAIN_ID
+    for k in NEWLY_DEPLOYED_CONTRACTS.keys():
+        persist(NEWLY_DEPLOYED_CONTRACTS[k], CHAIN_ID, CHAIN_ID)
+    for k in WATCHLIST.keys():
+        persist(WATCHLIST[k], CHAIN_ID, CHAIN_ID)
+
+
+
+def handle_transaction(transaction_event):
+    # return real_handle_transaction(transaction_event)
+    return analyze_transaction(w3, transaction_event)
+
+
 
