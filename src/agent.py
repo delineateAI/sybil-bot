@@ -158,8 +158,8 @@ def analyze_transaction(w3, transaction_event):
 
 
     # if this transaction has 0 value, ignore
-    # if transaction_event.transaction.value <= 0:
-    #     return findings
+    if transaction_event.transaction.value <= 0:
+        return findings
 
     # detect first transactions for recently deployed contracts and add to WATCHLIST
     if erc20_address in NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID]:
