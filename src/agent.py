@@ -11,7 +11,7 @@ import rlp
 
 #REmeber uncomment value if statement before submit
 
-logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
+# logging.basicConfig(filename='sybil.log', level=logging.DEBUG)
 
 w3 = Web3(Web3.HTTPProvider(get_json_rpc_url()))
 CHAIN_ID = -1
@@ -141,7 +141,7 @@ def analyze_transaction(w3, transaction_event):
         return findings
     #see if this transaction deploys a contract
     if is_contract_deployment(transaction_event):
-        print("yo")
+        logging.info(f"transaction {transaction_event.transaction.hash} is a contract deployment")
         NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID].append(  calc_contract_address( w3, transaction_event.from_,  transaction_event.transaction.nonce ) )
         return findings
 
@@ -155,16 +155,28 @@ def analyze_transaction(w3, transaction_event):
 
     sender_address = transaction_event.from_
     erc20_address = transaction_event.to
+    number_tokens = 0
 
+    if function_signature == list_transfer_signatures[0]:
+        #meaning transfer(address,uint256)
+        recipient_address = "0x" + transaction_data[10:74].lstrip("0")
+        # number_tokens = int( '0x' + transaction_data[74:74+64], 16)
+    else:
+        #meaning transferFrom(address, address, uint256)
+        from_address = "0x" + transaction_data[10:74].lstrip("0")
+        recipient_address = "0x" + transaction_data[74:74+64].lstrip("0")
+        # number_tokens = int('0x' + transaction_data[138:138+64],  16)
 
-    # if this transaction has 0 value, ignore
-    if transaction_event.transaction.value <= 0:
-        return findings
+    # if this transaction transacts 0 tokens, ignore
+
+    # if number_tokens == 0:
+    #     return findings
 
     # detect first transactions for recently deployed contracts and add to WATCHLIST
     if erc20_address in NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID]:
         NEWLY_DEPLOYED_CONTRACTS[CHAIN_ID].remove(erc20_address)
         WATCHLIST[CHAIN_ID].append(erc20_address)
+        logging.info(f"new token {erc20_address}'s first transaction. adding to watchlist")
 
 
 
@@ -180,19 +192,10 @@ def analyze_transaction(w3, transaction_event):
     if is_older_than_x_days(last_clear, 7):
         senders[CHAIN_ID].clear()
         last_clear = datetime.datetime.now()
+        logging.info(f"Weekly clearing of senders for chain id {CHAIN_ID}, senders: {senders[CHAIN_ID]}")
 
 
-    if function_signature == list_transfer_signatures[0]:
-        #meaning transfer(address,uint256)
-        recipient_address = "0x" + transaction_data[10:74].lstrip("0")
-    else:
-        #meaning transferFrom(address, address, uint256)
-        from_address = "0x" + transaction_data[10:74].lstrip("0")
-        recipient_address = "0x" + transaction_data[74:74+64].lstrip("0")
 
-    # filter_out(recipient_address)
-    # if should_filter(recipient_address):
-    #     return findings
 
     # TODO: Check logic
     exchange_wallet = is_exchange_wallet(recipient_address)
@@ -241,8 +244,13 @@ def analyze_transaction(w3, transaction_event):
         logging.debug(f"Potential Sybil attack identified {findings}")
 
 
-        if datetime.datetime.now().minute == 0:  # every hour
+        if datetime.datetime.now().minute == 0:  # every hour that this is run
             persist_state()
+            logging.debug(f"Persisted state")
+            logging.debug(f"hourly logging of Newly deployed contracts", NEWLY_DEPLOYED_CONTRACTS )
+            logging.debug(f"hourly logging of watchlist of contracts", WATCHLIST)
+
+
 
 
     return findings
